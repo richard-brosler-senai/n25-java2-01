@@ -1,0 +1,14 @@
+package br.com.senaisp.bauru.secao03.aula06;
+
+import javax.swing.JOptionPane;
+
+public class Exemplo01 {
+
+	public static void main(String[] args) {
+		//Solicitando a entrada de dados via janela do Swing
+		String nome = JOptionPane.showInputDialog("Digite seu nome:");
+		//Mostrando uma mensagem via janela do Swing
+		JOptionPane.showMessageDialog(null, "Olá, " + nome + ", tudo bem?");
+	}
+
+}
