@@ -1,0 +1,11 @@
+package br.com.senaisp.bauru.secao05.aula11;
+
+public class TicTacToeTest {
+
+	public static void main(String[] args) {
+		TicTacToe tc = new TicTacToe();
+		tc.iniciarTabuleiro();
+		tc.mostrarTabuleiro();
+	}
+
+}

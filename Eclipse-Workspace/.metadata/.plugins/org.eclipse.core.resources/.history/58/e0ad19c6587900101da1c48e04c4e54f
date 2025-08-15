@@ -1,0 +1,22 @@
+package br.com.senaisp.bauru.secao05.aula11;
+
+import java.util.Random;
+
+public class TicTacToe {
+	private char[] tabuleiro;
+	private String nomePlayer;
+	private int[] posDisp;
+	private Random rnd;
+	public TicTacToe() {
+		rnd = new Random();
+		tabuleiro = new char[9];
+		for (int i=0;i<9;i++) tabuleiro[i] = '_';
+	}
+	public String getNomePlayer() {
+		return nomePlayer;
+	}
+	public void setNomePlayer(String nomePlayer) {
+		this.nomePlayer = nomePlayer;
+	}
+	
+}
