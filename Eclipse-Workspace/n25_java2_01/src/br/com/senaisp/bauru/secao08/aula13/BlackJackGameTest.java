@@ -42,13 +42,34 @@ public class BlackJackGameTest {
 						System.out.println(ct);
 					}
 					System.out.println("Seu total de cartas é " + pl.getTotalCarta());
-					System.out.println("Deseja mais uma carta? (S/N): ");
-					String resp = sc.nextLine().substring(0,1).toUpperCase();
-					if (resp.equals("S")) {
-						gam.solicitarCarta(i);
-					} //if se quer solicitar cartas
-				}
+					do { // <---- novo
+						System.out.println("Deseja mais uma carta? (S/N): ");
+						String resp = sc.nextLine().substring(0,1).toUpperCase();
+						
+						if (resp.equals("S")) {
+							gam.solicitarCarta(i);
+							break; //<--- novo
+						} //if se quer solicitar cartas
+						
+						if (resp.equals("N")) {
+							gam.solicitarParada(i);
+							break; //<--- novo
+						} //if se quer solicitar parada
+						
+					} while(true); //<--- novo
+				} //If parou ou perdeu
 			} //For dos Players para solicitar e mostrar as cartas
 		} while (!gam.isFimJogo());
+		//Mostrar os resultados
+		System.out.println("=".repeat(50));
+		System.out.println("Resultados");
+		System.out.println("=".repeat(50));
+		for (BlackJackPlayer pl : gam.getPlayers()) {
+			System.out.println("Player " + pl.getNome() + 
+							   (pl.isGanhador() ? " é um ganhador" : " perdeu") + 
+							   " com a pontuação: " + pl.getTotalCarta()
+							   );
+		}
+		sc.close();
 	}
 }
