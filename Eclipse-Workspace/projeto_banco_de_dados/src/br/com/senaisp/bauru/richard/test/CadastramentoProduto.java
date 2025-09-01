@@ -2,6 +2,7 @@ package br.com.senaisp.bauru.richard.test;
 
 import java.sql.SQLException;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import br.com.senaisp.bauru.richard.classes.Produto;
@@ -23,6 +24,7 @@ public class CadastramentoProduto {
 			//Tratamento para entrada da opção
 			try {
 				op = sc.nextInt();
+				sc.nextLine(); //Captura o enter do inteiro
 			}catch(InputMismatchException e) {
 				op=0;
 				sc.nextLine();//Captura o enter do erro
@@ -32,13 +34,21 @@ public class CadastramentoProduto {
 			case 1 -> cadastrarProduto(sc);
 			case 2 -> listarProdutos(sc);
 			case 3 -> consultarProduto(sc);
-			case 4 -> cadastrarProduto(sc);
+			case 4 -> alterarProduto(sc);
 			case 5 -> excluirProduto(sc);
 			case 9 -> System.out.println("Até mais!");
 			default -> System.out.println("Opção inválida!!!");
 			}
-			
+			if (op>0 && op<6) {
+				System.out.println("Pressione enter para continuar!");
+				sc.nextLine();
+			}
 		} while (op != 9);
+	}
+
+	private static Object alterarProduto(Scanner sc) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private static Object excluirProduto(Scanner sc) {
@@ -46,22 +56,29 @@ public class CadastramentoProduto {
 		return null;
 	}
 
-	private static Object consultarProduto(Scanner sc) {
+	private static void consultarProduto(Scanner sc) {
+		Produto prod = pesquisarProduto(sc);
+	}
+
+	private static Produto pesquisarProduto(Scanner sc) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private static Object listarProdutos(Scanner sc) {
-		// TODO Auto-generated method stub
-		return null;
+	private static void listarProdutos(Scanner sc) {
+		List<Produto> lista = Produto.listarProdutos();
+		for (Produto it : lista) {
+			System.out.print("Produto: " + it.getDescricao());
+			System.out.print(" - " + it.getId() + " - ");
+			System.out.println("Saldo: " + it.getSaldo());
+		}
+		System.out.println("Fim da Listagem...");
 	}
 
 	private static void cadastrarProduto(Scanner sc) {
 		System.out.println("Cadastramento de produto");
 		do {
 			try {
-				if (sc.hasNext()) sc.nextLine(); 
-				//se tiver algo ainda no scanner, capturamos na linha acima
 				System.out.println("Digite a descrição: ");
 				String desc = sc.nextLine();
 	
@@ -84,8 +101,14 @@ public class CadastramentoProduto {
 								e.getMessage());
 					}
 				}
+				System.out.println("Deseja continuar cadastrando? (S/N):");
+				conf = sc.nextLine();
+				if (conf.toLowerCase().equals("n")) {
+					break;
+				}
 			} catch (InputMismatchException e) {
 				System.out.println("Por favor, digite somente números!");
+				sc.nextLine(); //Captura o enter do erro
 			}
 		} while(true);
 	}
