@@ -67,24 +67,9 @@ public class CadastramentoProduto {
 		}while(true);
 	}
 
-	private static void excluirProduto(Scanner sc) {
-		do {
-			Produto prod = pesquisarProduto(sc);
-			if (prod!=null) {
-				mostrarProduto(prod);
-				String conf = confirmarOperacao("Deseja excluir o registro? (S/N)", sc);
-				if (conf.toLowerCase().equals("s")) {
-					prod.apagarRegistro();
-				}
-				//Falta continua s/n
-				conf = confirmarOperacao("Deseja continuar excluindo? (S/N)", sc);
-				if (conf.toLowerCase().equals("n")) {
-					break;
-				}
-			} else {
-				System.out.println("Produto não encontrado!");
-			}
-		}while(true);
+	private static Object excluirProduto(Scanner sc) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private static void consultarProduto(Scanner sc) {

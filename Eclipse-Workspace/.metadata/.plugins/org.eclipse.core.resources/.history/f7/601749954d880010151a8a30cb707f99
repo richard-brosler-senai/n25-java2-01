@@ -74,10 +74,10 @@ public class CadastramentoProduto {
 				mostrarProduto(prod);
 				String conf = confirmarOperacao("Deseja excluir o registro? (S/N)", sc);
 				if (conf.toLowerCase().equals("s")) {
-					prod.apagarRegistro();
+					prod.atualizarBanco();
 				}
 				//Falta continua s/n
-				conf = confirmarOperacao("Deseja continuar excluindo? (S/N)", sc);
+				conf = confirmarOperacao("Deseja continuar alterando? (S/N)", sc);
 				if (conf.toLowerCase().equals("n")) {
 					break;
 				}
