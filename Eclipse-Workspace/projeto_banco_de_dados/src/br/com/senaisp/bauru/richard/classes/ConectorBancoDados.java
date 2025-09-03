@@ -13,7 +13,7 @@ public class ConectorBancoDados {
 	private ConectorBancoDados() throws SQLException {
 		//connStr = "jdbc:sqlite:c:\\javalibs\\producao.db";
 		connStr = "jdbc:mysql://127.0.0.1/producao";
-		conn = DriverManager.getConnection(connStr);
+		conn = DriverManager.getConnection(connStr,"root","senha");
 		criarEstrutura();
 	}
 	private void criarEstrutura() {
