@@ -1,0 +1,3 @@
+module projeto_javafx_module {
+	requires javafx.graphics;
+}
